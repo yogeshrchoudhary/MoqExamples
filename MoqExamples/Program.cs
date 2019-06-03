@@ -1,8 +1,5 @@
+using MoqExamples.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoqExamples
 {
@@ -10,12 +7,16 @@ namespace MoqExamples
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            ISchoolConfig schoolConfig = new ActualImplementationSchoolConfig();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            School school = new School(schoolConfig);
+            Console.WriteLine(school.GetConfigValue("One"));
+            Console.WriteLine(school.GetConfigValue("Two"));
+            Console.WriteLine(school.GetConfigValue("Three"));
+            Console.WriteLine(school.GetConfigValue("Four"));
+
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey(true);
         }
     }
 }
